@@ -6,6 +6,12 @@
   <title>Document</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+<style>
+  .box {
+    width: 20px;
+    height: 20px;
+  }
+</style>
 <body>
   <div class="text-center">
       <h1 class="display-4">Minesweeper</h1>
@@ -22,14 +28,29 @@
     function createBoard(event) {
       event.preventDefault();
       let inputs = $(this).serializeArray();
+      let data = {
+        width: inputs["width"],
+        height: inputs["height"]
+      };
       $.ajax({
         type: "POST",
         url: "http://localhost:5000/CreateBoard",
-        data: {
-          width: inputs["width"],
-          height: inputs["height"]
-        },
+        data: data,
         success: (res) => {
+          console.log(res);
+          for (let r = 0; r < data.height; r++)
+          {
+            $("#board").css("width", data.width * 20);
+});
+            for (let c = 0; c < data.width; c++)
+            {
+              let newSquare = document.createElement("button");
+              newSquare.addClass("box");
+              $("#board").append(newSquare);
+            }
+          }
+        },
+        failure: (res) => {
           console.log(res);
         },
       });
