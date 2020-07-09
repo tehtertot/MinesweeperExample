@@ -63,9 +63,20 @@
 
   <script>
     function revealValue(event) {
-      console.log(event);
-      console.log($(this).data("row"));
-      console.log($(this).data("col"));
+      let buttonId = event.target.id;
+      let row = $(this).data("row");
+      let col = $(this).data("col");
+      
+      $.get(`http://localhost:5000/getValue?row=${row}&col=${col}`,
+        (res) => {
+          let innerText = ":(";
+          if (res >= 0) {
+            innerText = res;
+          }
+          $(`#${button}`).text(innerText);
+        }
+      )
+      
     }
     
     $(".square").click(revealValue);
@@ -100,7 +111,7 @@
       });
     }
   
-    document.getElementById("boardCreationForm").addEventListener("submit", createBoard)
+    //document.getElementById("boardCreationForm").addEventListener("submit", createBoard)
   </script>
 </body>
 </html>
