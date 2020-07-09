@@ -67,16 +67,18 @@
       let row = $(this).data("row");
       let col = $(this).data("col");
       
-      $.get(`http://localhost:5000/Minesweeper/GetValue?row=${row}&col=${col}`,
-        (res) => {
-          let innerText = ":(";
-          if (res >= 0) {
-            innerText = res;
-          }
-          $(`#${button}`).text(innerText);
+      $.ajax({
+        method: "GET",
+        url: `http://localhost:5000/Minesweeper/GetValue?row=${row}&col=${col}`,
+      }).done((res) => {
+        let innerText = ":(";
+        if (res >= 0) {
+          innerText = res;
         }
-      )
-      
+        $(`#${button}`).text(innerText);
+      }).fail((error) {
+        console.log(error);
+      })  
     }
     
     $(".square").click(revealValue);
