@@ -63,8 +63,9 @@
 
   <script>
     function revealValue(event) {
-      console.log($(this).data("row");
-      console.log($(this).data("col");
+      console.log(event);
+      console.log($(this).data("row"));
+      console.log($(this).data("col"));
     }
     
     $(".square").click(revealValue);
