@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <style>
@@ -15,13 +16,49 @@
 <body>
   <div class="text-center">
       <h1 class="display-4">Minesweeper</h1>
-      <div id="options">
+      <!-- <div id="options">
           <form method="POST" id="boardCreationForm">
               Width: <input type="number" name="width"> Height: <input type="number" name="height">
               <button>Start Game!</button>
           </form>
+      </div> -->
+      <div id="board">
+        <div class="row">
+          <button data-row=0 data-col=0 id="0" class="square"></button>
+          <button data-row=0 data-col=1 id="1" class="square"></button>
+          <button data-row=0 data-col=2 id="2" class="square"></button>
+          <button data-row=0 data-col=3 id="3" class="square"></button>
+          <button data-row=0 data-col=4 id="4" class="square"></button>
+        </div>
+        <div class="row">
+          <button data-row=1 data-col=0 id="5" class="square"></button>
+          <button data-row=1 data-col=1 id="6" class="square"></button>
+          <button data-row=1 data-col=2 id="7" class="square"></button>
+          <button data-row=1 data-col=3 id="8" class="square"></button>
+          <button data-row=1 data-col=4 id="9" class="square"></button>
+        </div>
+        <div class="row">
+          <button data-row=2 data-col=0 id="10" class="square"></button>
+          <button data-row=2 data-col=1 id="11" class="square"></button>
+          <button data-row=2 data-col=2 id="12" class="square"></button>
+          <button data-row=2 data-col=3 id="13" class="square"></button>
+          <button data-row=2 data-col=4 id="14" class="square"></button>
+        </div>
+        <div class="row">
+          <button data-row=3 data-col=0 id="15" class="square"></button>
+          <button data-row=3 data-col=1 id="16" class="square"></button>
+          <button data-row=3 data-col=2 id="17" class="square"></button>
+          <button data-row=3 data-col=3 id="18" class="square"></button>
+          <button data-row=3 data-col=4 id="19" class="square"></button>
+        </div>
+        <div class="row">
+          <button data-row=4 data-col=0 id="20" class="square"></button>
+          <button data-row=4 data-col=1 id="21" class="square"></button>
+          <button data-row=4 data-col=2 id="22" class="square"></button>
+          <button data-row=4 data-col=3 id="23" class="square"></button>
+          <button data-row=4 data-col=4 id="24" class="square"></button>
+        </div>
       </div>
-      <div id="board"></div>
   </div>
 
   <script>
