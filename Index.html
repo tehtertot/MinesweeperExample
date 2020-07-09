@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="text-center">
+      <h1 class="display-4">Minesweeper</h1>
+      <div id="options">
+          <form method="POST" id="boardCreationForm">
+              Width: <input type="number" name="width"> Height: <input type="number" name="height">
+              <button>Start Game!</button>
+          </form>
+      </div>
+      <div id="board"></div>
+  </div>
+
+  <script>
+    function createBoard(event) {
+      event.preventDefault();
+      let inputs = $(this).serializeArray();
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:5000/CreateBoard",
+        data: {
+          width: inputs["width"],
+          height: inputs["height"]
+        },
+        success: (res) => {
+          console.log(res);
+        },
+      });
+    }
+  
+    document.getElementById("boardCreationForm").addEventListener("submit", createBoard)
+  </script>
+</body>
+</html>
